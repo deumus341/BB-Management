@@ -1,0 +1,54 @@
+﻿@model BuayaManagement.Models.TblFacilityRequest
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TblFacilityRequest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FacReqId" />
+            <div class="form-group">
+                <label asp-for="FacId" class="control-label"></label>
+                <select asp-for="FacId" class="form-control" asp-items="ViewBag.FacId"></select>
+                <span asp-validation-for="FacId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReqFacNameBy" class="control-label"></label>
+                <input asp-for="ReqFacNameBy" class="form-control" />
+                <span asp-validation-for="ReqFacNameBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FacDate" class="control-label"></label>
+                <input asp-for="FacDate" class="form-control" />
+                <span asp-validation-for="FacDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FacQty" class="control-label"></label>
+                <input asp-for="FacQty" class="form-control" />
+                <span asp-validation-for="FacQty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ToAmount" class="control-label"></label>
+                <input asp-for="ToAmount" class="form-control" />
+                <span asp-validation-for="ToAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

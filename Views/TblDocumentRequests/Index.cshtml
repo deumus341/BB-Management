@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BuayaManagement.Models.TblDocumentRequest>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<style>
+   /* .input-group {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 120px;
+        transform: translateY(-50%);
+    }*/
+
+    form{
+            
+        text-align: right;
+    }
+
+
+</style>
+
+<h1>Document Request Transaction Log</h1>
+
+
+
+<p>
+    <a asp-action="Create" class="btn btn-success" >Request Document/s</a>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+        <br />
+    </form>
+
+@*    <a asp-action="Create" class="btn btn-success">Print All</a>*@
+</p>
+
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReqDocNameBy)
+            </th>
+            <th>
+                Date and Time Requested
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotAmount)
+            </th>
+            <th>
+                Document Requested
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReqDocNameBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotAmount)
+            </td>
+            <td>
+              
+                @Html.DisplayFor(modelItem =>  item.Doc.DocName)
+            </td>
+            <td>
+               
+                <a asp-action="Edit" asp-route-id="@item.DocId" class="btn btn-secondary">Print Document</a> 
+
+                <a asp-action="Details" asp-route-id="@item.DocReqId" class="btn btn-primary" >Print Receipt</a> 
+
+                <a asp-action="Delete" asp-route-id="@item.DocReqId" class="btn btn-danger" >Cancel</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

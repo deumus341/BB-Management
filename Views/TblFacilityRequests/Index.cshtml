@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BuayaManagement.Models.TblFacilityRequest>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReqFacNameBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FacQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fac)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReqFacNameBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fac.FacId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FacReqId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FacReqId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FacReqId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
